@@ -7,6 +7,7 @@ export const HeaderContainer = styled.View`
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  background-color: ${({ theme }) => theme.COLORS.GRAY_600};
 `;
 
 export const Logo = styled.Image`
