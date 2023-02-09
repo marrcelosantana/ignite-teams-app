@@ -1,4 +1,5 @@
 import { StatusBar } from "react-native";
+
 import theme from "@theme/index";
 import { ThemeProvider } from "styled-components";
 
