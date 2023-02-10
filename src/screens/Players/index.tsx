@@ -1,5 +1,5 @@
-import { FlatList } from "react-native";
 import { useState } from "react";
+import { FlatList } from "react-native";
 
 import { ButtonIcon } from "@components/ButtonIcon";
 import { Filter } from "@components/Filter";
