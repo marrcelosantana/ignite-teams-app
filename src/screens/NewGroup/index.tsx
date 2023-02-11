@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Alert } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
 import { Button } from "@components/Button";
@@ -6,19 +7,28 @@ import { Header } from "@components/Header";
 import { Highlight } from "@components/Highlight";
 import { Input } from "@components/Input";
 
-import { NewGroupContent, NewGroupContainer, Icon } from "./styles";
+import { AppError } from "@utils/AppError";
 import { groupCreate } from "@storage/group/groupCreate";
+
+import { NewGroupContent, NewGroupContainer, Icon } from "./styles";
 
 export function NewGroup() {
   const [group, setGroup] = useState("");
   const navigation = useNavigation();
 
-  async function handleNew() {
+  async function handleCreateNewGroup() {
     try {
+      if (group.trim().length === 0) {
+        return Alert.alert("Novo Grupo", "Informe o nome da turma.");
+      }
       await groupCreate(group);
       navigation.navigate("players", { group: group });
     } catch (error) {
-      console.log(error);
+      if (error instanceof AppError) {
+        Alert.alert("Novo Grupo", error.message);
+      } else {
+        console.log(error);
+      }
     }
   }
 
@@ -38,7 +48,7 @@ export function NewGroup() {
           style={{ marginBottom: 12 }}
           onChangeText={(group) => setGroup(group)}
         />
-        <Button title="Criar" onPress={handleNew} />
+        <Button title="Criar" onPress={handleCreateNewGroup} />
       </NewGroupContent>
     </NewGroupContainer>
   );
