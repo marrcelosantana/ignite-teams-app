@@ -8,7 +8,7 @@ import { Highlight } from "@components/Highlight";
 import { ListEmpty } from "@components/ListEmpty";
 import { Button } from "@components/Button";
 
-import { Container } from "./styles";
+import { GroupsContainer } from "./styles";
 
 export function Groups() {
   const [groups, setGroups] = useState<string[]>([]);
@@ -20,7 +20,7 @@ export function Groups() {
   }
 
   return (
-    <Container>
+    <GroupsContainer>
       <Header />
       <Highlight title="Turmas" subtitle="jogue com a sua turma" />
 
@@ -35,6 +35,6 @@ export function Groups() {
       />
 
       <Button title="Criar nova turma" onPress={handleNewGroup} />
-    </Container>
+    </GroupsContainer>
   );
 }
