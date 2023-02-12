@@ -10,7 +10,6 @@ import { Input } from "@components/Input";
 import { PlayerCard } from "@components/PlayerCard";
 import { ListEmpty } from "@components/ListEmpty";
 import { Button } from "@components/Button";
-import { Loading } from "@components/Loading";
 
 import { AppError } from "@utils/AppError";
 
@@ -85,7 +84,7 @@ export function Players() {
       navigation.navigate("groups");
     } catch (error) {
       console.log(error);
-      Alert.alert("Remover Grupo", "Não foi posível remover o grupo");
+      Alert.alert("Remover Grupo", "Não foi posível remover a turma");
     }
   }
 
